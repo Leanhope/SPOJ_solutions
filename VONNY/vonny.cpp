@@ -15,19 +15,14 @@ void solve(int i, int j, int counter)
 
 	cellUsed[i][j] = true;
 	int firstSquare, secondSquare;
-	///check HORIZONTAL
+
+	//horizontal
 	if (j < 7)
 	{
-		if (inputField[i][j] > inputField[i][j + 1])
-		{
-			firstSquare = inputField[i][j + 1];
-			secondSquare = inputField[i][j];
-		}
-		else
-		{
-			firstSquare = inputField[i][j];
-			secondSquare = inputField[i][j + 1];
-		}
+		firstSquare = inputField[i][j + 1];
+		secondSquare = inputField[i][j];
+		if(firstSquare > secondSquare) 
+			swap(firstSquare, secondSquare);
 
 		if (stoneUsed[firstSquare][secondSquare] == false && cellUsed[i][j + 1]==false)
 		{
@@ -55,24 +50,21 @@ void solve(int i, int j, int counter)
 			stoneUsed[firstSquare][secondSquare] = false;
 		}
 	}
-	///check VERTICAL
+	//vertical
 	if (i < 6)
 	{
-		if (inputField[i][j] > inputField[i + 1][j])
-		{
-			firstSquare = inputField[i + 1][j];
-			secondSquare = inputField[i][j];
-		}
-		else
-		{
-			firstSquare = inputField[i][j];
-			secondSquare = inputField[i + 1][j];
-		}
-		bool found = false;
+		firstSquare = inputField[i + 1][j];
+		secondSquare = inputField[i][j];
+		if(firstSquare > secondSquare) 
+			swap(firstSquare, secondSquare);
+
 		if (stoneUsed[firstSquare][secondSquare] == false && cellUsed[i + 1][j] == false)
 		{
 			stoneUsed[firstSquare][secondSquare] = true;
 			cellUsed[i + 1][j] = true;
+
+			bool found = false;
+
 			int next_i = 0, next_j = 0;
 			for (int _i = i; _i < 7; _i++)
 			{
