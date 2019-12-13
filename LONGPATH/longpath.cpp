@@ -16,11 +16,8 @@ void visit(graph& g, int k, int end, vector<int> visited, vector<int> solution) 
                 return;
             }
 	for (auto el : g[k])
-	{
 		if (visited[el] == -1)
-        {
 			visit(g, el, end, visited, solution);
-        }
 	}
 	return;
 }
@@ -48,7 +45,6 @@ int main()
 	}
         
 	visit(g, a-1, b-1, visited, solution);
-
 
     for(auto el : best)
         cout << el + 1 << " ";
