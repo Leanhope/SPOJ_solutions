@@ -19,6 +19,8 @@ void visit1(graph& g, int k)
 	for (auto el : g[k])
 		if (visited[k] == -1)
 			visit1(g, el);
+    
+    cout << "In Stack: " << k << ". ";
 	s.push(k);
 }
 
@@ -87,8 +89,14 @@ int main()
 	//for (auto el : tmp)
 	//	cout << el + 1 << " ";
 
-    //for(auto i : visited)
-    //    cout << i;
+    for (int i = 0; i < visited.size(); i++)
+    {
+        cout << endl << "Node " << i << ": ";
+        for(auto j : g[i])
+            cout << j +1 << " ";
+    }
+        
+    cout << endl;
 
 	for (int i = 0; i < visited.size(); i++)
 		if (sizes[visited[i]] > 1)
